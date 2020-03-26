@@ -10,7 +10,7 @@
 var client = new LessonParser();
 
 //Getting the whole table
-IEnumerable<Lesson> lessons = client.RetrieveTableAsync("EHB");
+IEnumerable<Lesson> lessons = client.RetrieveTableAsync("EHB").GetAwaiter().GetResult();
 
 //Getting Lesson Specific Information
 Lesson lesson = client.ParseLesson(20280);
