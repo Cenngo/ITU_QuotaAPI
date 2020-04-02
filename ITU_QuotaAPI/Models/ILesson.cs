@@ -11,10 +11,10 @@ namespace ITU_QuotaAPI.Models
 		string Day { get; set; }
 		string Time { get; set; }
 		int Capacity { get; set; }
-		int Enroled { get; set; }
+		int Enrolled { get; set; }
 
 		string[] Restrictions { get; set; }
 
-		bool IsEligable ( string major );
+		bool IsEligible ( string major );
 	}
 }

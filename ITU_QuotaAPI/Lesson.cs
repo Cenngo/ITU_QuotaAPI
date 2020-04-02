@@ -18,11 +18,11 @@ namespace ITU_QuotaAPI
 		public string Time { get; set; }
 		public string Room { get; set; }
 		public int Capacity { get; set; }
-		public int Enroled { get; set; }
+		public int Enrolled { get; set; }
 		public string Reservations { get; set; }
 
 		public string[] Restrictions { get; set; }
-		public string Prerequisities { get; set; }
+		public string Prerequisites { get; set; }
 		public string ClassRestrictions { get; set; }
 
 		/// <summary>
@@ -30,7 +30,7 @@ namespace ITU_QuotaAPI
 		/// </summary>
 		/// <param name="major"></param>
 		/// <returns></returns>
-		public bool IsEligable ( string major )
+		public bool IsEligible ( string major )
 		{
 			return Restrictions.Contains(major.ToUpper());
 		}
@@ -39,9 +39,9 @@ namespace ITU_QuotaAPI
 		/// Check if there is any space in the lesson
 		/// </summary>
 		/// <returns></returns>
-		public bool IsAvaiable ()
+		public bool IsAvailable ()
 		{
-			return Enroled <= Capacity ? true : false;
+			return Enrolled <= Capacity ? true : false;
 		}
 	}
 }

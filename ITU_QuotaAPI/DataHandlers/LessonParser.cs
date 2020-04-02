@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ITU_QuotaAPI.DataHandlers
 {
 	/// <summary>
-	/// Instance Class that Handles the Operations for Lesson Informations
+	/// Instance Class that Handles the Operations for Lesson Information
 	/// </summary>
 	public class LessonParser
 	{
@@ -49,16 +49,16 @@ namespace ITU_QuotaAPI.DataHandlers
 			UriBuilder uriBuilder = new UriBuilder(_baseUrl);
 			uriBuilder.Query = $"fb={lessonCode}";
 
-			var result = _client.GetAsync(uriBuilder.Uri).Result;
+			var response = _client.GetAsync(uriBuilder.Uri).Result;
 
-			HtmlDocument html = new HtmlDocument();
+			var html = new HtmlDocument();
 
-			using (var sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
+			using (var sr = new StreamReader(response.Content.ReadAsStreamAsync().Result))
 				html.LoadHtml(sr.ReadToEnd());
 
 			List<Lesson> classTable = new List<Lesson>();
 
-			var table = html.DocumentNode.Descendants(0).Where(x => x.HasClass(TableClass)).First();
+			var table = html.DocumentNode.Descendants(0).First(x => x.HasClass(TableClass));
 			var rows = table.SelectNodes("tr").ToList();
 
 			rows.RemoveRange(0, 2);
@@ -81,10 +81,10 @@ namespace ITU_QuotaAPI.DataHandlers
 					Time = data[6],
 					Room = data[7],
 					Capacity = Convert.ToInt32(data[8]),
-					Enroled = Convert.ToInt32(data[9]),
+					Enrolled = Convert.ToInt32(data[9]),
 					Reservations = data[10],
 					Restrictions = data[11].Split(','),
-					Prerequisities = data[12],
+					Prerequisites = data[12],
 					ClassRestrictions = data[13]
 				});
 			}
@@ -104,8 +104,15 @@ namespace ITU_QuotaAPI.DataHandlers
 			return _classTable.Find(x => x.CRN == CRN) as Lesson;
 		}
 
+		public Lesson ParseLesson(string lessonCode, int CRN)
+		{
+			var table = RetrieveTableAsync(lessonCode).GetAwaiter().GetResult();
+
+			return table.ToList().Find(x => x.CRN == CRN) as Lesson;
+		}
+
 		/// <summary>
-		/// Avaiable Class Code Options from Website
+		/// Available Class Code Options from Website
 		/// </summary>
 		/// <returns></returns>
 		public IEnumerable<string> ParseLessonCodes ()
