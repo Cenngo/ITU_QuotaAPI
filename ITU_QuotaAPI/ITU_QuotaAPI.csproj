@@ -9,8 +9,9 @@
     <Copyright>© 2020 Cenk Ergen</Copyright>
     <PackageLicenseExpression>https://opensource.org/licenses/MIT</PackageLicenseExpression>
     <RepositoryType>Public</RepositoryType>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <NeutralLanguage></NeutralLanguage>
+    <Version>1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
