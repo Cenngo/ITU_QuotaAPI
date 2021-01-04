@@ -1,7 +1,7 @@
 ![enter image description here](https://img.shields.io/badge/Made%20With-C%23-blueviolet?style=for-the-badge)
 ![enter image description here](https://img.shields.io/github/license/Cenngo/ITU_QuotaAPI?style=flat-square)
-![enter image description here](https://img.shields.io/nuget/v/ITU_QuotaAPI?logo=nuget&style=flat-square)
-
+<a href="https://www.nuget.org/packages/ITU_QuotaAPI/"><img alt="Nuget" src="https://img.shields.io/nuget/v/ITU_QuotaAPI?logo=nuget&style=flat-square"></a>
+<a href="https://www.nuget.org/packages/ITU_QuotaAPI/"><img alt="Nuget" src="https://img.shields.io/nuget/dt/ITU_QuotaAPI?color=orange&logo=nuget&style=flat-square"></a>
 
 # .NET Wrapper for ITU Class Schedule
 * Parse All Lesson Informations for Different Course Codes as Tables
