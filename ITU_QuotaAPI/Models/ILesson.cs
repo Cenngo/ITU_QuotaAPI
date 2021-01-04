@@ -2,15 +2,13 @@
 {
     public interface ILesson
     {
-        int CRN { get; set; }
-        string Code { get; set; }
-        string Day { get; set; }
-        string Time { get; set; }
-        int Capacity { get; set; }
-        int Enrolled { get; set; }
-
-        string[] Restrictions { get; set; }
-
+        int CRN { get; }
+        string Code { get; }
+        string Day { get;}
+        string Time { get; }
+        int Capacity { get; }
+        int Enrolled { get; }
+        string[] Restrictions { get; }
         bool IsEligible ( string major );
     }
 }

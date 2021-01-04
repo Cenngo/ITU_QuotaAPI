@@ -28,7 +28,7 @@ namespace ITU_QuotaAPI.DataHandlers
         public string DropdownName { get; set; } = "bolum";
 
         /// <summary>
-        /// 
+        /// Instance class for handling ITU Quota parsing
         /// </summary>
         /// <param name="baseUrl">Base URl of the Source(set to "http://www.sis.itu.edu.tr/tr/ders_programlari/LSprogramlar/prg.php" by default)</param>
         public LessonParser ( string baseUrl = null )
@@ -45,8 +45,10 @@ namespace ITU_QuotaAPI.DataHandlers
         /// <returns></returns>
         public async Task<IEnumerable<Lesson>> RetrieveTableAsync ( string lessonCode )
         {
-            var uriBuilder = new UriBuilder(_baseUrl);
-            uriBuilder.Query = $"fb={lessonCode}";
+            var uriBuilder = new UriBuilder(_baseUrl)
+            {
+                Query = $"fb={lessonCode}"
+            };
 
             var response = _client.GetAsync(uriBuilder.Uri).Result;
 
@@ -141,8 +143,10 @@ namespace ITU_QuotaAPI.DataHandlers
         {
             var pseudoClassCode = ParseLessonCodes().First();
 
-            var uriBuilder = new UriBuilder(_baseUrl);
-            uriBuilder.Query = $"fb={pseudoClassCode}";
+            var uriBuilder = new UriBuilder(_baseUrl)
+            {
+                Query = $"fb={pseudoClassCode}"
+            };
 
             var result = _client.GetAsync(uriBuilder.Uri).Result;
 
